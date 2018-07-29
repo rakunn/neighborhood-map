@@ -1,0 +1,8 @@
+.marker-icon {
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.marker-icon:hover {
+  transform: scale(1.2);
+}

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { test } from './test';
+import { locations } from './locations';
 
 export default combineReducers({
-  test: test,
+  locations: locations,
 });
