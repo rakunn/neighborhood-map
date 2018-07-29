@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
+import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl';
 import MarkerIcon from './markers/MarkerIcon';
+
+import store from '../store';
+import changeCurrentLocation from '../actions/changeCurrentLocation';
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoicmFrdW5uIiwiYSI6ImNqM2gxeHBmZzAwODgycXA2Yzh2OGJ0YTEifQ.XNd3YHnFOXAyq1etI3UDNg',
@@ -8,7 +11,9 @@ const Map = ReactMapboxGl({
 
 class MyMap extends Component {
   render() {
+    const { currentLocation } = this.props.data;
     const { venues } = this.props.data.locations.response;
+
     return (
       <Map
         // eslint-disable-next-line
@@ -20,11 +25,20 @@ class MyMap extends Component {
             <Marker
               anchor="bottom"
               coordinates={[venue.location.lng, venue.location.lat]}
-              onClick={() => {console.log(venue)}}
+              onClick={() => {store.dispatch(changeCurrentLocation(venue))}}
               key={venue.id}
             >
               <MarkerIcon style={{fill: 'orange'}}/>
             </Marker> )) }
+        { currentLocation.id && (
+          <Popup
+            coordinates={[currentLocation.location.lng, currentLocation.location.lat]}
+            offset={{
+              'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+            }}>
+            <h1>Popup</h1>
+          </Popup>
+        )}
       </Map>
     );
   }
