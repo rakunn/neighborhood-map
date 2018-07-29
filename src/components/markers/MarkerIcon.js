@@ -7,8 +7,8 @@ const MarkerIcon = ({ style }) => {
          id="Capa_1"
          x="0px"
          y="0px"
-         width="40px"
-         height="40px"
+         width="30px"
+         height="30px"
          viewBox="0 0 512 512"
          style={style}>
       <g>

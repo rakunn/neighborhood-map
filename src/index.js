@@ -7,6 +7,7 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
 const render = () => {
+  console.log(store.getState());
   ReactDOM.render(<App />, document.getElementById('root'));
 };
 

@@ -5,11 +5,11 @@ import './App.css';
 import Map from '../components/MyMap';
 
 class App extends Component {
-  state = store.getState();
   render() {
+    const state = store.getState();
     return (
       <div className="App">
-        <Map />
+        <Map data={state}/>
       </div>
     );
   }
