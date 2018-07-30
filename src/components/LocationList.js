@@ -31,7 +31,6 @@ const styles = theme => ({
 
 const LocationList = ({ classes, data }) => {
   const { venues } = data.locations.response;
-  console.log(data);
 
   return (
       <MenuList className={classes.list}>

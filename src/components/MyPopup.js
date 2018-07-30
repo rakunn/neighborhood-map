@@ -8,6 +8,7 @@ const MyPopup = ({ currentLocation }) => {
       coordinates={[lng, lat]}
       offset={{'bottom': [0, -38]}}>
       <h1>Popup</h1>
+      <img src={`https://maps.googleapis.com/maps/api/streetview?size=200x200&location=${lat},${lng}&fov=90&heading=235&pitch=10&key=AIzaSyDicFQoRWREO_gX1sTklPjE8Kjhni7qmQU`} />
     </Popup>
   );
 };
