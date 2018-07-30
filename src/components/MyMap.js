@@ -16,8 +16,10 @@ class MyMap extends Component {
       <Map
         // eslint-disable-next-line
         style="mapbox://styles/rakunn/cj64v83dy5qv22rpcgy1y7zgt"
-        containerStyle={{ width: '100vw', height: '100vh', marginTop: '8px'}}
-        center={averageCoordinates}>
+        containerStyle={{ width: '90vw', height: '90vh' }}
+        center={averageCoordinates}
+        zoom={[13]}
+      >
         { venues.map(venue => <MyMarker key={venue.id} venue={venue} /> )}
         { currentLocation.id && <MyPopup currentLocation={currentLocation} />}
       </Map>

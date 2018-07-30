@@ -7,8 +7,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import changeCurrentLocation from "../actions/changeCurrentLocation";
 import { isCurrentLocation } from '../helpers'
+import './LocationList.css';
 
 const styles = theme => ({
+  list: {
+    height: '85vh',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+  },
   menuItem: {
     whiteSpace: 'normal',
     width: 200,
@@ -28,7 +34,7 @@ const LocationList = ({ classes, data }) => {
   console.log(data);
 
   return (
-      <MenuList>
+      <MenuList className={classes.list}>
         {venues.map((venue) => (
           <MenuItem
             onClick={() => store.dispatch(changeCurrentLocation(venue))}
