@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import store from '../store';
 import './App.css';
 
-import Map from '../components/MyMap';
+import Header from '../components/Header';
+import MainContent from './MainContent';
 
 class App extends Component {
   render() {
-    const state = store.getState();
     return (
       <div className="App">
-        <Map data={state}/>
+        <Header />
+        <MainContent />
       </div>
     );
   }
