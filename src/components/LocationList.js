@@ -2,23 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import store from '../store';
 import { withStyles } from '@material-ui/core/styles';
+import SearchFilter from './SearchFilter';
+import Typography from '@material-ui/core/Typography';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import changeCurrentLocation from "../actions/changeCurrentLocation";
-import { isCurrentLocation } from '../helpers'
+import { isCurrentLocation, filterLocations } from '../helpers'
 import './LocationList.css';
+import changeMapFocus from "../actions/changeMapFocus";
 
 const styles = theme => ({
   list: {
-    height: '85vh',
+    height: '78vh',
     overflowY: 'scroll',
     overflowX: 'hidden',
+    paddingTop: 0,
+    width: 220,
   },
   menuItem: {
     whiteSpace: 'normal',
-    width: 200,
     height: 30,
+    width: 220,
     borderTop: '1px solid #eee',
   },
   currentVenue: {
@@ -27,16 +32,30 @@ const styles = theme => ({
       backgroundColor: 'yellow',
     }
   },
+  results: {
+    padding: '0.5em',
+  }
 });
 
 const LocationList = ({ classes, data }) => {
+  const { filter } = data;
   const { venues } = data.locations.response;
+  const filteredVenues = filterLocations(venues, filter);
+
+  const handleClick = (venue) => {
+    const { lng, lat } = venue.location;
+    store.dispatch(changeCurrentLocation(venue));
+    store.dispatch(changeMapFocus([lng, lat]));
+  };
 
   return (
+    <div>
+      <SearchFilter />
+      <Typography className={classes.results} variant="button">{ filteredVenues.length } results </Typography>
       <MenuList className={classes.list}>
-        {venues.map((venue) => (
+        {filteredVenues.map((venue) => (
           <MenuItem
-            onClick={() => store.dispatch(changeCurrentLocation(venue))}
+            onClick={() => handleClick(venue)}
             key={venue.id} className={isCurrentLocation(data.currentLocation, venue) ? classes.currentVenue + " " + classes.menuItem : classes.menuItem}>
               <ListItemText
                 primary={venue.name}
@@ -45,6 +64,7 @@ const LocationList = ({ classes, data }) => {
           </MenuItem>
         ))}
       </MenuList>
+    </div>
   );
 };
 

@@ -4,15 +4,23 @@ import { Marker } from 'react-mapbox-gl';
 
 import store from "../store";
 import changeCurrentLocation from "../actions/changeCurrentLocation";
+import changeMapFocus from '../actions/changeMapFocus';
 import { isCurrentLocation } from '../helpers';
 
 const MyMarker = ({ venue }) => {
   const currentLocation = store.getState().currentLocation;
+
+  const handleClick = (venue) => {
+    const { lng, lat } = venue.location;
+    store.dispatch(changeCurrentLocation(venue));
+    store.dispatch(changeMapFocus([lng, lat]));
+  };
+
   return(
     <Marker
       anchor="bottom"
       coordinates={[venue.location.lng, venue.location.lat]}
-      onClick={() => store.dispatch(changeCurrentLocation(venue))}
+      onClick={() => handleClick(venue)}
       key={venue.id}>
       <MarkerIcon style={{fill: isCurrentLocation(venue, currentLocation ) ? 'red' : 'orange'}}/>
     </Marker>

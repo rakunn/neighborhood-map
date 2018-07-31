@@ -3,7 +3,7 @@ export const isCurrentLocation = (currentVenue, venue) => currentVenue.id === ve
 
 /* Calculates average longitude and latitude for selected venues */
 export const calculateAverageCoordinates = (venues) => {
-  const length = venues.length;
+  const length = venues.length || 1; //zero would crash this app, thus 1 if no records
   return venues
     .map(venue => [venue.location.lng, venue.location.lat])
     .reduce((acc, [lng, lat]) => {
@@ -12,4 +12,9 @@ export const calculateAverageCoordinates = (venues) => {
       return acc;
     }, [0, 0])
     .map(sum => sum / length);
+};
+
+/* Returns venues that match current filter */
+export const filterLocations = (venues, filter) => {
+  return venues.filter(venue => venue.name.toLowerCase().includes(filter.toLowerCase()));
 };
