@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import ReactMapboxGl from 'react-mapbox-gl';
+import store from "../store";
+import { filterLocations } from '../helpers';
+import resetCurrentLocation from "../actions/resetCurrentLocation";
+
 import MyMarker from './MyMarker';
 import MyErrPopup from './MyErrPopup';
 import MyPopup from './MyPopup';
-import { filterLocations } from '../helpers';
-import store from "../store";
-import resetCurrentLocation from "../actions/resetCurrentLocation";
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoicmFrdW5uIiwiYSI6ImNqM2gxeHBmZzAwODgycXA2Yzh2OGJ0YTEifQ.XNd3YHnFOXAyq1etI3UDNg',
 });
 
 class MyMap extends Component {
-
   render() {
     const { currentLocation, filter, currentFocus } = this.props.data;
     const { venues } = this.props.data.locations.response;
