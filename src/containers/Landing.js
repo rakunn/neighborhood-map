@@ -5,20 +5,19 @@ import store from '../store';
 import { fetchLocations } from "../helpers/API";
 import { populateLocations } from "../actions/populateLocations";
 import { changeLocation, changeSearch } from "../actions/changeSearch";
-import BarIcon from '@material-ui/icons/LocalBar';
-import Button from '@material-ui/core/Button';
-import HotelIcon from '@material-ui/icons/Hotel';
-import MallIcon from '@material-ui/icons/LocalMall';
-import DiningIcon from '@material-ui/icons/LocalDining';
-import CategoryIcon from '@material-ui/icons/Category';
-import SearchIcon from '@material-ui/icons/Search';
 import {calculateAverageCoordinates} from "../helpers";
 import changeMapFocus from "../actions/changeMapFocus";
+import Buttons from '../components/Buttons';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+import Fade from '@material-ui/core/Fade';
 
 
 class Landing extends React.Component {
   state = {
     open: true,
+    loading: false,
   };
 
   handleClick = (query) => (event) => {
@@ -32,38 +31,40 @@ class Landing extends React.Component {
   };
 
   handleSubmit = (location, details) => evt => {
+    this.setState({loading: true})
     fetchLocations(location, details)
-      .then(response=>{
-        console.log(response);
+      .then((response) => {
         const locations = response.response.venues;
         store.dispatch(populateLocations(response));
         store.dispatch(changeMapFocus(calculateAverageCoordinates(locations)));
+        this.setState({loading: false, open: false});
       })
-      .catch(err=>console.log(err));
+      .catch((err) => console.log(err));
   };
 
   render() {
-    console.log(store.getState());
     const { location, detail } = store.getState().search;
-    return (
+    return this.state.open && (
       <div className="Landing__hero">
         <h1 className="Landing__hero_main">City Explorer</h1>
         <h2 className="Landing__hero_secondary">Find the best venues in your neighborhood</h2>
         <form className="Landing__form">
           <div className="Landing__form__buttons">
-            <button className="Landing__form__button" onClick={this.handleClick('bar')}><BarIcon /></button>
-            <button className="Landing__form__button" onClick={this.handleClick('hotel')}><HotelIcon /></button>
-            <button className="Landing__form__button" onClick={this.handleClick('shopping')}><MallIcon /></button>
-            <button className="Landing__form__button" onClick={this.handleClick('restaurant')}><DiningIcon /></button>
-            <button className="Landing__form__button" onClick={this.handleClick('any')}><CategoryIcon /></button>
+            <Buttons variant="white" />
           </div>
           <label className="Landing__form__label">
             <input className="Landing__form__input" onChange={this.handleChange} type="text" placeholder="City, address..."/><SearchIcon/>
           </label>
-          <Button variant="contained" color="primary" onClick={this.handleSubmit(location, detail)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.handleSubmit(location, detail)}
+            disabled={this.state.loading}
+          >
             Search
           </Button>
         </form>
+        {this.state.loading && <CircularProgress color="secondary" style={{color: '#00bcd4' }} size={82} /> }
       </div>
     );
   }

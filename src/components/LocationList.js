@@ -21,15 +21,15 @@ const styles = theme => ({
     width: 220,
   },
   menuItem: {
+    borderTop: '1px solid #eee',
     whiteSpace: 'normal',
     height: 30,
     width: 220,
-    borderTop: '1px solid #eee',
   },
   currentVenue: {
-    backgroundColor: 'red',
+    background: 'linear-gradient(#33c9dc, #00bcd4)',
     '&:hover': {
-      backgroundColor: 'yellow',
+      background: 'linear-gradient(#00bcd4, #33c9dc)',
     }
   },
   results: {

@@ -22,7 +22,7 @@ const MyMarker = ({ venue }) => {
       coordinates={[venue.location.lng, venue.location.lat]}
       onClick={() => handleClick(venue)}
       key={venue.id}>
-      <MarkerIcon style={{fill: isCurrentLocation(venue, currentLocation ) ? 'red' : 'orange'}}/>
+      <MarkerIcon style={{fill: isCurrentLocation(venue, currentLocation ) ? '#008394' : '#33c9dc'}}/>
     </Marker>
   )
 };

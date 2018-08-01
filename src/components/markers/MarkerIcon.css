@@ -6,3 +6,13 @@
 .marker-icon:hover {
   transform: scale(1.2);
 }
+
+.MyMarker {
+  fill: #008394;
+  transition: 1s all;
+}
+
+.MyMarker .active {
+  transform: scale(1.2);
+  fill: #33c9dc;
+}

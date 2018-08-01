@@ -23,39 +23,12 @@
 }
 
 .Landing__form {
-
   margin: 3em auto;
 }
 
 .Landing__form__label {
   display: flex;
   justify-content: center;
-}
-
-.Landing__form__icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.Landing__form__buttons svg {
-  fill: #fff;
-}
-
-.Landing__form__button {
-  background: none;
-  margin: 0.5em 0.2em;
-  padding: 0.5em;
-  border: 1px solid #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.Landing__form__button:hover {
-  background-color: #fff;
-  color: #000;
 }
 
 .Landing__form__submit {
@@ -90,6 +63,7 @@
   padding: 1em;
   border-radius: 20px;
   width: 30%;
+  min-width: 200px;
 }
 
 
