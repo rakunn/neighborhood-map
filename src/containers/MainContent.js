@@ -12,8 +12,6 @@ class MainContent extends Component {
   componentDidMount() {
     setTimeout(() => {
       const state = store.getState();
-      const locations = state.locations.response.venues;
-      store.dispatch(changeMapFocus(calculateAverageCoordinates(locations)));
     },1);
   };
 

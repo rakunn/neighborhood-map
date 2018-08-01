@@ -32,6 +32,51 @@
   justify-content: center;
 }
 
+.Landing__form__icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Landing__form__buttons svg {
+  fill: #fff;
+}
+
+.Landing__form__button {
+  background: none;
+  margin: 0.5em 0.2em;
+  padding: 0.5em;
+  border: 1px solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Landing__form__button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.Landing__form__submit {
+  background: none;
+  color: #fff;
+  margin: 0.5em 0.2em;
+  padding: 0.5em;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Landing__form__label {
+  margin-bottom: 1em;
+}
+
+.Landing__form__submit:hover {
+  background-color: #fff;
+  color: #000;
+}
+
 .Landing__form__label svg {
   padding: 0.5em;
   fill: #fff;
@@ -46,4 +91,6 @@
   border-radius: 20px;
   width: 30%;
 }
+
+
 
