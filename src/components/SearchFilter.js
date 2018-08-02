@@ -16,9 +16,6 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
-  menu: {
-    width: 200,
-  },
 });
 
 class SearchFilter extends React.Component {
@@ -37,6 +34,7 @@ class SearchFilter extends React.Component {
           placeholder="Name, address..."
           className={classes.textField}
           margin="normal"
+          fullWidth
           onChange={this.handleChange}
         />
       </form>

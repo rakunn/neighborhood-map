@@ -18,13 +18,11 @@ const styles = theme => ({
     overflowY: 'scroll',
     overflowX: 'hidden',
     paddingTop: 0,
-    width: 220,
   },
   menuItem: {
     borderTop: '1px solid #eee',
     whiteSpace: 'normal',
-    height: 30,
-    width: 220,
+    height: 60,
   },
   currentVenue: {
     background: 'linear-gradient(#33c9dc, #00bcd4)',

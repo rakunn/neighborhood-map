@@ -11,7 +11,7 @@ import Buttons from '../components/Buttons';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
-import Fade from '@material-ui/core/Fade';
+import {pressControlButton} from "../actions/pressControlButton";
 
 
 class Landing extends React.Component {
@@ -20,9 +20,10 @@ class Landing extends React.Component {
     loading: false,
   };
 
-  handleClick = (query) => (event) => {
+  handleClick = (query, id) => (event) => {
     event.preventDefault();
     store.dispatch(changeSearch(query));
+    store.dispatch(pressControlButton(id));
   };
 
   handleChange = (event) => {
@@ -31,7 +32,7 @@ class Landing extends React.Component {
   };
 
   handleSubmit = (location, details) => evt => {
-    this.setState({loading: true})
+    this.setState({loading: true});
     fetchLocations(location, details)
       .then((response) => {
         const locations = response.response.venues;
@@ -43,14 +44,16 @@ class Landing extends React.Component {
   };
 
   render() {
-    const { location, detail } = store.getState().search;
+    const state = store.getState();
+    const { location, detail } = state.search;
+    const { controls } = state;
     return this.state.open && (
       <div className="Landing__hero">
         <h1 className="Landing__hero_main">City Explorer</h1>
         <h2 className="Landing__hero_secondary">Find the best venues in your neighborhood</h2>
         <form className="Landing__form">
           <div className="Landing__form__buttons">
-            <Buttons variant="white" />
+            <Buttons controls={controls} onClick={this.handleClick} variant="white" />
           </div>
           <label className="Landing__form__label">
             <input className="Landing__form__input" onChange={this.handleChange} type="text" placeholder="City, address..."/><SearchIcon/>

@@ -28,3 +28,12 @@
   cursor: pointer;
 }
 
+.Landing__form__button.active {
+  background-color: #fff;
+  color: #000;
+}
+
+.Landing__form__button.active svg {
+  fill: #00bcd4;
+}
+
