@@ -20,11 +20,10 @@ export const fetchLocations = (location = '', details = '') => {
 
   return rp(options)
     .then((response) => {
-      console.log(response)
-      return response
+      return response;
     })
     .catch((err) => {
-      console.log(err)
-      return []
+      console.log(err);
+      return []; //empty array in return
     });
 };

@@ -11,6 +11,10 @@ const styles = {
     flexGrow: 1,
     marginBottom: 8,
   },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
 };
 
 const Header = (props) => {
@@ -18,7 +22,7 @@ const Header = (props) => {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <Typography variant="title" color="inherit">
             City Explorer
           </Typography>

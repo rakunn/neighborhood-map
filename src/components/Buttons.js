@@ -2,7 +2,7 @@ import React from 'react';
 import './Buttons.css';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const Buttons = ({ controls, onClick, variant }) => {
+const Buttons = ({ controls, onClick }) => {
   return (
     <div className="Landing__form__buttons">
       { controls.map((button, id) => {

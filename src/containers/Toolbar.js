@@ -20,7 +20,9 @@ const styles = theme => ({
   },
   chip: {
     backgroundColor: '#33c9dc',
+    color: '#fff',
     margin: theme.spacing.unit / 2,
+    textTransform: 'uppercase',
   },
 });
 
@@ -31,16 +33,16 @@ const Toolbar = ({classes}) => {
 
   const handleClick = (query, id) => (event) => {
     event.preventDefault();
-    fetchLocations(location, detail)
+    store.dispatch(changeSearch(query));
+    fetchLocations(location, query)
       .then((response) => {
         const locations = response.response.venues;
         store.dispatch(populateLocations(response));
         store.dispatch(changeMapFocus(calculateAverageCoordinates(locations)));
-        store.dispatch(changeSearch(query));
-        store.dispatch(pressControlButton(id));
+        store.dispatch(pressControlButton(id),100);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
   };
 
