@@ -78,6 +78,10 @@ class Landing extends React.Component {
         {this.state.loading && <CircularProgress color="secondary" style={{color: '#00bcd4' }} size={82} /> }
         {this.state.badQuery && <ErrorNotif message="Your query did not return any results. Please verify."/>}
         <Offline><ErrorNotif message="Whoops, it seems you have no internet connection."/></Offline>
+        <footer>
+          <p className="author">Rafał Bagrowski © 2018 | Udacity Front-End Developer Nanodegree</p>
+          <p className="attribution">Location data from <strong>FourSquare API</strong></p>
+        </footer>
       </div>
     );
   }

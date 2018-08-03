@@ -66,5 +66,21 @@
   min-width: 200px;
 }
 
+footer {
+  position: fixed;
+  font-size: 12px;
+  padding: 1em;
+  display: block;
+  width: 100%;
+  bottom: 0;
+}
+
+footer .author {
+  color: #ddd;
+}
+
+footer .attribution {
+  color: #fff;
+}
 
 
