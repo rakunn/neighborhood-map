@@ -16,5 +16,8 @@ export const calculateAverageCoordinates = (venues) => {
 
 /* Returns venues that match current filter */
 export const filterLocations = (venues, filter) => {
-  return venues.filter(venue => venue.name.toLowerCase().includes(filter.toLowerCase()));
+  return venues.filter(venue => {
+    return venue.name.toLowerCase().includes(filter.toLowerCase()) ||
+      (venue.location.address && venue.location.address.toLowerCase().includes(filter.toLowerCase()))
+  });
 };

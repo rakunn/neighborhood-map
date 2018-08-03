@@ -16,6 +16,7 @@ const MyPopup = ({ currentLocation }) => {
       <Typography variant="title" align="center">{ name }</Typography>
       <Typography variant="subheading" align="center">{ address }</Typography>
       <img
+        style={{display: 'block', margin: 'auto'}}
         alt={`${name} street view`}
         src={`https://maps.googleapis.com/maps/api/streetview?size=150x150&location=${lat},${lng}&fov=90&heading=235&pitch=10&key=AIzaSyDicFQoRWREO_gX1sTklPjE8Kjhni7qmQU`} />
       <Typography variant="button" align="center">{ categories[0].shortName }</Typography>

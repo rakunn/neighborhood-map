@@ -22,7 +22,7 @@ class MyMap extends Component {
       currentFocus && (
         <Map
           // eslint-disable-next-line
-          style="mapbox://styles/rakunn/cj64v83dy5qv22rpcgy1y7zgt"
+          style="mapbox://styles/rakunn/cjkdo0buecf772rs5zebi8hon"
           containerStyle={{ width: '90vw', height: '90vh' }}
           center={currentFocus}
           zoom={[13]}
