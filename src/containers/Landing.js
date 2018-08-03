@@ -7,11 +7,13 @@ import { populateLocations } from "../actions/populateLocations";
 import { changeLocation, changeSearch } from "../actions/changeSearch";
 import {calculateAverageCoordinates} from "../helpers";
 import changeMapFocus from "../actions/changeMapFocus";
+import {pressControlButton} from "../actions/pressControlButton";
+import OfflineNotif from '../components/OfflineNotif';
 import Buttons from '../components/Buttons';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
-import {pressControlButton} from "../actions/pressControlButton";
+import { Offline } from 'react-detect-offline';
 
 
 class Landing extends React.Component {
@@ -68,6 +70,7 @@ class Landing extends React.Component {
           </Button>
         </form>
         {this.state.loading && <CircularProgress color="secondary" style={{color: '#00bcd4' }} size={82} /> }
+        <Offline><OfflineNotif/></Offline>
       </div>
     );
   }

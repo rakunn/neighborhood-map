@@ -47,7 +47,7 @@ const LocationList = ({ classes, data }) => {
   };
 
   return (
-    <div>
+    <div className="LocationList__container">
       <SearchFilter />
       <Typography className={classes.results} variant="button">{ filteredVenues.length } results </Typography>
       <MenuList className={classes.list}>
