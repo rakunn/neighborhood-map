@@ -11,7 +11,7 @@ const styles = theme => ({
   },
 });
 
-class SimpleSnackbar extends React.Component {
+class ErrorNotif extends React.Component {
   state = {
     open: true,
   };
@@ -25,6 +25,7 @@ class SimpleSnackbar extends React.Component {
   };
 
   render() {
+    const { message } = this.props;
     return (
       <div>
         <Snackbar
@@ -37,10 +38,10 @@ class SimpleSnackbar extends React.Component {
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">Whoops, it seems you have no internet connection.</span>}
+          message={<span id="message-id"> { message }</span>}
           action={
             <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
-              Ok, I will verify.
+              OK, thanks.
             </Button>}
         />
       </div>
@@ -48,8 +49,9 @@ class SimpleSnackbar extends React.Component {
   }
 }
 
-SimpleSnackbar.propTypes = {
+ErrorNotif.propTypes = {
   classes: PropTypes.object.isRequired,
+  message: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(SimpleSnackbar);
+export default withStyles(styles)(ErrorNotif);

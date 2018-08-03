@@ -8,7 +8,7 @@ import { changeLocation, changeSearch } from "../actions/changeSearch";
 import {calculateAverageCoordinates} from "../helpers";
 import changeMapFocus from "../actions/changeMapFocus";
 import {pressControlButton} from "../actions/pressControlButton";
-import OfflineNotif from '../components/OfflineNotif';
+import ErrorNotif from '../components/ErrorNotif';
 import Buttons from '../components/Buttons';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,6 +20,7 @@ class Landing extends React.Component {
   state = {
     open: true,
     loading: false,
+    badQuery: false,
   };
 
   handleClick = (query, id) => (event) => {
@@ -33,8 +34,10 @@ class Landing extends React.Component {
     store.dispatch(changeLocation(event.target.value));
   };
 
-  handleSubmit = (location, details) => evt => {
-    this.setState({loading: true});
+  handleSubmit = (location, details) => event => {
+    //Mixing redux and local state here. It made more sense to set local state for landing page, because related values are used only here.
+    event.preventDefault();
+    this.setState({loading: true, badQuery: false});
     fetchLocations(location, details)
       .then((response) => {
         const locations = response.response.venues;
@@ -42,7 +45,9 @@ class Landing extends React.Component {
         store.dispatch(changeMapFocus(calculateAverageCoordinates(locations)));
         this.setState({loading: false, open: false});
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({loading: false, badQuery: true});
+      });
   };
 
   render() {
@@ -63,6 +68,7 @@ class Landing extends React.Component {
           <Button
             variant="contained"
             color="primary"
+            type="submit"
             onClick={this.handleSubmit(location, detail)}
             disabled={this.state.loading}
           >
@@ -70,7 +76,8 @@ class Landing extends React.Component {
           </Button>
         </form>
         {this.state.loading && <CircularProgress color="secondary" style={{color: '#00bcd4' }} size={82} /> }
-        <Offline><OfflineNotif/></Offline>
+        {this.state.badQuery && <ErrorNotif message="Your query did not return any results. Please verify."/>}
+        <Offline><ErrorNotif message="Whoops, it seems you have no internet connection."/></Offline>
       </div>
     );
   }

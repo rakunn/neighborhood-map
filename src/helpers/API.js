@@ -19,6 +19,12 @@ export const fetchLocations = (location = '', details = '') => {
   }
 
   return rp(options)
-    .then((response) => response)
-    .catch((err) => err);
+    .then((response) => {
+      console.log(response)
+      return response
+    })
+    .catch((err) => {
+      console.log(err)
+      return []
+    });
 };
