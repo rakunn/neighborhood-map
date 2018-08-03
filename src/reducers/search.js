@@ -2,7 +2,7 @@ import { CHANGE_QUERY_FROM_BUTTON, CHANGE_LOCATION_FROM_INPUT } from '../constan
 
 const initialState = {
   location: '',
-  detail: ''
+  detail: 'bar'
 };
 
 export const search = (state = initialState, action) => {

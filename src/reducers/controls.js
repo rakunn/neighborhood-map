@@ -9,7 +9,7 @@ import TerrainIcon from '@material-ui/icons/Terrain';
 
 const buttonControl = [
   {
-    active: false,
+    active: true,
     query: 'bar',
     icon: <BarIcon />
   },{

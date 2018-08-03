@@ -56,7 +56,7 @@ class Landing extends React.Component {
     const { location, detail } = state.search;
     const { controls, homepageIsOpen } = state;
     return homepageIsOpen && (
-      <div className="Landing__hero">
+      <div className="Landing__hero" aria-label="landing page with city background">
         <h1 className="Landing__hero_main">City Explorer</h1>
         <h2 className="Landing__hero_secondary">Find the best venues in your neighborhood</h2>
         <form className="Landing__form">
@@ -85,7 +85,7 @@ class Landing extends React.Component {
         <Offline><ErrorNotif message="Whoops, it seems you have no internet connection."/></Offline>
         <footer>
           <p className="author">Rafał Bagrowski © 2018 | Udacity Front-End Developer Nanodegree</p>
-          <p className="attribution">Location data from <strong>FourSquare API</strong></p>
+          <p className="attribution">Location data powered by <strong>FourSquare API</strong></p>
         </footer>
       </div>
     );
