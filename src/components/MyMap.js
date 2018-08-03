@@ -23,7 +23,7 @@ class MyMap extends Component {
           <Map
             // eslint-disable-next-line
             style="mapbox://styles/rakunn/cjkdo0buecf772rs5zebi8hon"
-            containerStyle={{ width: '80vw', height: '90vh' }}
+            containerStyle={{ width: '100%', height: '100%' }}
             center={currentFocus}
             zoom={[13]}
             onClick={() => store.dispatch(resetCurrentLocation())}

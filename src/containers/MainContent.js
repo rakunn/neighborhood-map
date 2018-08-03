@@ -8,7 +8,7 @@ import Map from '../components/MyMap';
 class MainContent extends Component {
   render() {
     const state = store.getState();
-    return (
+    return !state.homepageIsOpen && (
       <div className="Main">
         <LocationList data={state} />
         <Map data={state} />

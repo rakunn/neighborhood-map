@@ -64,7 +64,11 @@ class Landing extends React.Component {
             <Buttons controls={controls} onClick={this.handleClick} variant="white" />
           </div>
           <label className="Landing__form__label">
-            <input className="Landing__form__input" onChange={this.handleChange} type="text" placeholder="City, address..."/><SearchIcon/>
+            <div>
+              <input className="Landing__form__input" onChange={this.handleChange} type="text" placeholder="City name..."/>
+              <SearchIcon/>
+            </div>
+
           </label>
           <Button
             variant="contained"

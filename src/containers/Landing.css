@@ -45,6 +45,10 @@
   margin-bottom: 1em;
 }
 
+.Landing__form__label div {
+  width: 100%;
+}
+
 .Landing__form__submit:hover {
   background-color: #fff;
   color: #000;
@@ -54,7 +58,7 @@
   padding: 0.5em;
   fill: #fff;
   position: absolute;
-  right: 34%;
+  transform: translateX(-2em);
 }
 
 .Landing__form__input {
@@ -71,8 +75,8 @@ footer {
   font-size: 12px;
   padding: 1em;
   display: block;
-  width: 100%;
   bottom: 0;
+  width: 100%;
 }
 
 footer .author {
@@ -83,4 +87,14 @@ footer .attribution {
   color: #fff;
 }
 
+@media screen and (max-width: 600px) {
+  .Landing__hero_main {
+    margin-top: 2em;
+    font-size: 3em;
+  }
+
+  .Landing__hero_secondary {
+    font-size: 1em;
+  }
+}
 

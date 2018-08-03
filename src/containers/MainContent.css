@@ -1,4 +1,17 @@
 .Main {
   display: flex;
+  height: 90vh;
 }
 
+@media screen and (max-width: 600px) {
+  .Main {
+    flex-direction: column;
+  }
+  .Main .LocationList__container {
+    order: 1;
+    height: 45%;
+  }
+  .Main .mapboxgl-map {
+    width: 100vw;
+  }
+}
