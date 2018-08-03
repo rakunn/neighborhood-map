@@ -3,7 +3,7 @@ import ReactMapboxGl from 'react-mapbox-gl';
 import store from "../store";
 import { filterLocations } from '../helpers';
 import resetCurrentLocation from "../actions/resetCurrentLocation";
-
+import Toolbar from '../containers/Toolbar';
 import MyMarker from './MyMarker';
 import MyErrPopup from './MyErrPopup';
 import MyPopup from './MyPopup';
@@ -20,18 +20,19 @@ class MyMap extends Component {
 
     return (
       currentFocus && (
-        <Map
-          // eslint-disable-next-line
-          style="mapbox://styles/rakunn/cjkdo0buecf772rs5zebi8hon"
-          containerStyle={{ width: '90vw', height: '90vh' }}
-          center={currentFocus}
-          zoom={[13]}
-          onClick={() => store.dispatch(resetCurrentLocation())}
-        >
-        { filteredVenues.map(venue => <MyMarker key={venue.id} venue={venue} /> )}
-        { currentLocation.id && <MyPopup currentLocation={currentLocation} />}
-        { filteredVenues.length === 0 && <MyErrPopup /> }
-      </Map>
+          <Map
+            // eslint-disable-next-line
+            style="mapbox://styles/rakunn/cjkdo0buecf772rs5zebi8hon"
+            containerStyle={{ width: '80vw', height: '90vh' }}
+            center={currentFocus}
+            zoom={[13]}
+            onClick={() => store.dispatch(resetCurrentLocation())}
+          >
+            <Toolbar />
+          { filteredVenues.map(venue => <MyMarker key={venue.id} venue={venue} /> )}
+          { currentLocation.id && <MyPopup currentLocation={currentLocation} />}
+          { filteredVenues.length === 0 && <MyErrPopup /> }
+        </Map>
       )
     );
   }
