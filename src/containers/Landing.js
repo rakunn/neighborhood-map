@@ -2,12 +2,13 @@ import React from 'react';
 import './Landing.css';
 
 import store from '../store';
-import { fetchLocations } from "../helpers/API";
-import { populateLocations } from "../actions/populateLocations";
-import { changeLocation, changeSearch } from "../actions/changeSearch";
-import {calculateAverageCoordinates} from "../helpers";
-import changeMapFocus from "../actions/changeMapFocus";
-import {pressControlButton} from "../actions/pressControlButton";
+import { fetchLocations } from '../helpers/API';
+import { populateLocations } from '../actions/populateLocations';
+import { changeLocation, changeSearch } from '../actions/changeSearch';
+import { openHomepage } from '../actions/openHomepage';
+import {calculateAverageCoordinates} from '../helpers';
+import changeMapFocus from '../actions/changeMapFocus';
+import {pressControlButton} from '../actions/pressControlButton';
 import ErrorNotif from '../components/ErrorNotif';
 import Buttons from '../components/Buttons';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -18,7 +19,6 @@ import { Offline } from 'react-detect-offline';
 
 class Landing extends React.Component {
   state = {
-    open: true,
     loading: false,
     badQuery: false,
   };
@@ -43,7 +43,8 @@ class Landing extends React.Component {
         const locations = response.response.venues;
         store.dispatch(populateLocations(response));
         store.dispatch(changeMapFocus(calculateAverageCoordinates(locations)));
-        this.setState({loading: false, open: false});
+        store.dispatch(openHomepage(false));
+        this.setState({loading: false});
       })
       .catch((err) => {
         this.setState({loading: false, badQuery: true});
@@ -53,8 +54,8 @@ class Landing extends React.Component {
   render() {
     const state = store.getState();
     const { location, detail } = state.search;
-    const { controls } = state;
-    return this.state.open && (
+    const { controls, homepageIsOpen } = state;
+    return homepageIsOpen && (
       <div className="Landing__hero">
         <h1 className="Landing__hero_main">City Explorer</h1>
         <h2 className="Landing__hero_secondary">Find the best venues in your neighborhood</h2>

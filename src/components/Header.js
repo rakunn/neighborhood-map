@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import store from '../store';
+import { openHomepage } from "../actions/openHomepage";
+import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -26,7 +29,7 @@ const Header = (props) => {
           <Typography variant="title" color="inherit">
             City Explorer
           </Typography>
-          <HomeIcon className={classes.icon} color="primary" />
+          <Button onClick={() => store.dispatch(openHomepage(true))}><HomeIcon className={classes.icon} color="primary" /></Button>
         </Toolbar>
       </AppBar>
     </div>
