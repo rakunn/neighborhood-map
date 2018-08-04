@@ -37,3 +37,12 @@
   fill: #00bcd4;
 }
 
+@media screen and (max-width: 400px) {
+  .Landing__form__button {
+    width: 30px;
+    height: 30px;
+  }
+  .Landing__form__button svg {
+    font-size: 1em;
+  }
+}

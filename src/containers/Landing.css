@@ -97,3 +97,16 @@ footer .attribution {
   }
 }
 
+@media screen and (max-height: 600px) {
+  .Landing__hero_main {
+    margin-top: 0.5em;
+    font-size: 3em;
+  }
+  .Landing__hero_secondary {
+    font-size: 0.95em;
+  }
+  .Landing__form {
+    margin: 1em auto;
+  }
+}
+

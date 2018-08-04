@@ -7,9 +7,3 @@
   width: 100%;
   z-index: 5;
 }
-
-@media screen and (max-width: 400px) {
-  .Map__toolbar__container {
-    flex-direction: column;
-  }
-}
