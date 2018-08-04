@@ -99,14 +99,20 @@ footer .attribution {
 
 @media screen and (max-height: 600px) {
   .Landing__hero_main {
-    margin-top: 0.5em;
+    margin: 0.3em 0 0.1em 0;
     font-size: 3em;
   }
   .Landing__hero_secondary {
     font-size: 0.95em;
+    font-weight: 600;
   }
   .Landing__form {
     margin: 1em auto;
+  }
+
+  footer .author,
+  footer .attribution {
+    margin: 0.1em;
   }
 }
 
