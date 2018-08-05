@@ -21,7 +21,7 @@ const styles = theme => ({
   chip: {
     backgroundColor: '#33c9dc',
     color: '#fff',
-    margin: theme.spacing.unit / 2,
+    margin: theme.spacing.unit / 3,
     textTransform: 'uppercase',
   },
 });
@@ -49,8 +49,8 @@ const Toolbar = ({classes}) => {
   return (
     <div className="Map__toolbar__container">
       <div>
-        <Chip label={location} className={classes.chip} />
-        <Chip label={detail} className={classes.chip} />
+        <Chip label={location} className={classes.chip + " chip"} />
+        <Chip label={detail} className={classes.chip + " chip"} />
       </div>
       <Buttons onClick={handleClick} controls={controls}/>
     </div>

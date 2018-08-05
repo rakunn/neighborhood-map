@@ -38,6 +38,7 @@ const styles = theme => ({
 const LocationList = ({ classes, data }) => {
   const { filter } = data;
   const { venues } = data.locations.response;
+  const { location, detail } = data.search;
   const filteredVenues = filterLocations(venues, filter);
 
   const handleClick = (venue) => {
@@ -49,7 +50,7 @@ const LocationList = ({ classes, data }) => {
   return (
     <div className="LocationList__container">
       <SearchFilter />
-      <Typography className={classes.results} variant="button">{ filteredVenues.length } results </Typography>
+      <Typography className={classes.results} variant="button">{ filteredVenues.length } results for { detail } in { location } </Typography>
       <MenuList className={classes.list}>
         {filteredVenues.map((venue) => (
           <MenuItem
